@@ -1,0 +1,12 @@
+#Install
+sudo pacman -Sy ifuse usbmuxd libplist libimobiledevice
+(reboot)
+
+#Setup
+mkdir ~/iPhone
+
+#Check
+dmesg | grep -i iphone
+
+#Mount
+ifuse ~/iPhone
