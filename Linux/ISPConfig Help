@@ -1,0 +1,5 @@
+White Screen Possible Attack ===
+--------------------------------
+nano /usr/local/ispconfig/security/security_settings.ini
+ids_anon_enabled=no
+ids_user_enabled=no

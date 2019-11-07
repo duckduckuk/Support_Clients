@@ -1,0 +1,17 @@
+pacaur -S xcb-proto xcb-util-xrm
+pacaur -S xcb-proto xcb-util-cursor
+pacaur -S xcb-proto xcb-util-image xcb-util-wm
+pacaur -S cairo libxp python2
+pacaur -S libmpdclient
+
+
+
+pacaur -S polybar-git
+pacaur -S jsoncpp
+sudo ln -s /usr/lib/libjsoncpp.so.20 /usr/lib/libjsoncpp.so.19
+
+pacaur -S nerd-fonts-complete
+pacaur -S ttf-all-the-icons
+pacaur -S ttf-material-icons
+pacaur -S ttf-font-awesome-4
+pacaur -S otf-eb-garamond

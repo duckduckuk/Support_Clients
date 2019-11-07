@@ -1,0 +1,7 @@
+Update Keyring
+==============
+pacman -Sy archlinux-keyring && pacman -Syyu
+
+Find out Device name for Network
+================================
+ip link

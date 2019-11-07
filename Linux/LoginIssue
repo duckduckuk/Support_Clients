@@ -1,0 +1,7 @@
+# Problem : Only root can login
+
+Fix : 
+chown -R dylan:users /home/USERNAME
+chmod 700 /home/USERNAME
+grep USERNAME /etc/passwd
+usermod -a -G users USERNAME

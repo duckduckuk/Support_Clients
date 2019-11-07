@@ -1,0 +1,59 @@
+Install Docker ComposePermalink
+
+    Download the latest version of Docker Compose. Check the releases page and replace 1.21.2 in the command below with the version tagged as Latest release:
+
+    sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+    Set file permissions:
+
+    sudo chmod +x /usr/local/bin/docker-compose
+
+
+    Open docker-compose.yml in a text editor and add the following content:
+
+    docker-compose.ym
+
+        	
+
+        version: '3'
+
+        services:
+           db:
+             image: mysql:5.7
+             volumes:
+               - db_data:/var/lib/mysql
+             restart: always
+             environment:
+               MYSQL_ROOT_PASSWORD: somewordpress
+               MYSQL_DATABASE: wordpress
+               MYSQL_USER: wordpress
+               MYSQL_PASSWORD: wordpress
+
+           wordpress:
+             depends_on:
+               - db
+             image: wordpress:latest
+             ports:
+               - "8000:80"
+             restart: always
+             environment:
+               WORDPRESS_DB_HOST: db:3306
+               WORDPRESS_DB_USER: wordpress
+               WORDPRESS_DB_PASSWORD: wordpress
+        volumes:
+            db_data:
+
+    Save the file and run Docker Compose from the same directory:
+
+    docker-compose up -d
+
+    This will build and run the db and wordpress containers. Just as when running a single container with docker run, the -d flag starts the containers in detached mode.
+
+    You now have a WordPress container and MySQL container running on your host. Navigate to 192.0.8.1:8000/wordpress in a web browser to see your newly installed WordPress application. You can also use docker ps to further explore the resulting configuration:
+
+    docker ps
+
+    Stop and remove the containers:
+
+    docker-compose down
+

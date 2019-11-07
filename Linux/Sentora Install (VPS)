@@ -1,0 +1,29 @@
+apt-get update 
+apt-get upgrade
+
+Install the required packages:
+===
+apt-get install ca-certificates wget nano dbconfig-common sqlite3 postfix dovecot-imapd dovecot-lmtpd dovecot-pop3d dovecot-sqlite
+===
+
+Download the latest version of Sentora installation script and run it:
+===
+bash <(curl -L -Ss https://raw.githubusercontent.com/sentora/sentora-installers/master/sentora_install.sh)
+===
+
+Restart your server now to complete the install (y/n)? n
+
+Install the postfix-mysql package using the following command:
+===
+apt-get install postfix-mysql
+===
+
+Also, set the postfix daemon directory using:
+===
+postconf -e "daemon_directory=/usr/lib/postfix"
+===
+
+Restart the server:
+===
+shutdown -r now
+===

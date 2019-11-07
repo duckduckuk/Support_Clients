@@ -1,0 +1,7 @@
+#Stop the server
+sudo service httpd stop
+#Run the update
+enter the letsencrypt folder
+sudo ./certbot-auto renew
+#Restart the server
+sudo service httpd start

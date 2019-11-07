@@ -1,0 +1,6 @@
+YTB-DL
+ youtube-dl -i --extract-audio --audio-format mp3 ###URL HERE###
+ # Remember when saving your playlist to remove the "watch?v="
+ 
+ ## Advance (best sound)
+ youtube-dl -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0

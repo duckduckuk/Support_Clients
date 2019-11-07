@@ -1,0 +1,22 @@
+Create the template service file in /etc/systemd/system/resume-fix-pulseaudio@.service:
+
+[Unit]
+Description=Fix PulseAudio after resume from suspend
+After=suspend.target
+
+[Service]
+User=%I
+Type=oneshot
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
+ExecStart=/usr/bin/pasuspender /bin/true
+
+[Install]
+WantedBy=suspend.target
+
+2. Enable it for your user account
+
+# systemctl enable resume-fix-pulseaudio@YOUR_USERNAME_HERE.service
+
+3. Reload systemd
+
+# systemctl --system daemon-reload
