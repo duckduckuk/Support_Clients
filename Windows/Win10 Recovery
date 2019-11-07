@@ -1,0 +1,14 @@
+Boot to Recovery mode and select Command Prompt.
+Inside the Command Prompt window, type the command: bcdedit /set {default} safeboot minimal. 
+
+Press Enter on your keyboard and, after a moment, it tells you that "The operation completed successfully."
+
+Close the Command Prompt and choose to Continue on the next screen.
+Continuing to Windows 10
+
+After your PC reboots, Windows 10 starts into Safe Mode. Log in with a user account that has administrator permissions. 
+
+
+IMPORTANT: This method tells Windows 10 to enter Safe Mode automatically, every time you start it until you tell it not to. 
+To get Windows 10 to boot normally again, run the same procedure one more time and type the command: 
+bcdedit /deletevalue {default} safeboot.
