@@ -1,0 +1,5 @@
+Remove Cache (Win 10 Blur freeze on login)
+
+Start PC then powerdown x2 @ Windows Logo and spinning dots to enter Recovery Mode.
+
+Command Prompt: del *.* @ %windir%\system32\config\systemprofile\appdata\local\microsoft\windows\caches
