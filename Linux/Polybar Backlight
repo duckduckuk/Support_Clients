@@ -1,0 +1,2 @@
+Fin out your device using:
+light | cut -d. -f1 
