@@ -1,0 +1,417 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+;RESOURCES
+; Super Orange : #ed602d
+
+[colors]
+background = #cc000000
+background-alt = #333333
+foreground = #fff
+foreground-alt = #00acc1
+primary = #fff
+secondary = #fff
+alert = #bd2c40
+white = #fff
+space = #454545
+red = #e53935
+pink = #d81b60
+purple = #8e24aa
+deep-purple = #5e35b1
+indigo = #3949ab
+blue = #1e88e5
+light-blue = #039be5
+cyan = #00acc1
+teal = #00897b
+green = #43a047
+light-green = #7cb342
+lime = #c0ca33
+yellow = #fdd835
+amber = #ffb300
+orange = #fb8c00
+deep-orange = #f4511e
+brown = #6d4c41
+grey = #757575
+blue-grey = #546e7a
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[settings]
+; The throttle settings lets the eventloop swallow up til X events
+; if they happen within Y millisecond after first event was received.
+; This is done to prevent flood of update event.
+;
+; For example if 5 modules emit an update event at the same time, we really
+; just care about the last one. But if we wait too long for events to swallow
+; the bar would appear sluggish so we continue if timeout
+; expires or limit is reached.
+throttle-output = 5
+throttle-output-for = 10
+
+; Time in milliseconds that the input handler will wait between processing events
+throttle-input-for = 30
+
+; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = true
+
+[bar/one]
+wm-restack = i3
+monitor-strict = true
+bottom = false
+height = 23
+border-size= 0
+border-color= ${colors.background}
+background = ${colors.background}
+foreground = ${colors.foreground}
+font-0 = "Inconsolata :size=11;3"
+; font-1 = "NotoEmoji Nerd Font:size=8;2"
+tray-padding = 4
+spacing = 1
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+
+modules-left =  rofi thunar rofitask rofisesh xwindow
+modules-center = 
+modules-right =  keyboard SPACER date BREAKER eth SPACER cpu SPACER memory BREAKER volume SPACER backlight SPACER nm-launcher wifi-connect
+
+[module/xwindow]
+type = internal/xwindow
+label = "   %{F#5b5b5b}>%{F-} %title:0:70:...%"
+label-maxlen = 500
+
+#--- ---#
+
+[bar/bottom]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 40
+radius = 0
+fixed-center = false
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Cantarell:style=Regular:size=11;1
+font-1 = Unifont:size=10:style=Medium;0
+font-2 = FontAwesome:style=Regular:size=14
+font-3 = Weather Icons:size=14;1
+
+modules-left = xkeyboard info-redshift-temp backlight-acpi
+modules-center = mpd pulseaudio
+modules-right = wlan eth
+
+; tray-position = right
+tray-padding = 1
+tray-transparent = true
+tray-background = #aa222222
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+#---
+
+#---	
+[module/rofi]
+type = custom/script
+label-padding = 2
+interval = 120
+exec = echo "Menu"
+;click-left = "rofi -show-icons -show drun >/dev/null 2>&1 &"
+click-left = "rofi -location 1 -yoffset 22 -width 30 -show drun -show-icons >/dev/null 2>&1 &"
+label-foreground = ${colors.foreground}
+label-background = ${colors.red}
+
+[module/rofitask]
+type = custom/script
+label-padding = 2
+interval = 120
+exec = echo "Task"
+click-left = "rofi window -location 1 -yoffset 22 -width 30 -show window -show-icons >/dev/null 2>&1 &"
+label-foreground = ${colors.foreground}
+label-background = ${colors.teal}
+
+[module/rofisesh]
+type = custom/script
+label-padding = 2
+interval = 120
+exec = echo "User"
+click-left = "rofi_run -l >/dev/null 2>&1 &"
+label-foreground = ${colors.foreground}
+label-background = ${colors.blue}
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-click = true
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+format = <label-state> <label-mode>
+
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;8
+ws-icon-8 = 9;9
+ws-icon-9 = 10;10
+ws-icon-default = ::
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = ${colors.pink}
+
+label-focused = %icon%
+label-focused-foreground = ${colors.foreground}
+label-focused-underline = ${colors.primary}
+label-focused-background = ${colors.cyan}
+label-focused-padding = 2
+
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.teal}
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-visible = %icon%
+label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+
+[module/keyboard]
+type = internal/xkeyboard
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+; Available tags:
+;   <label-layout> (default)
+;   <label-indicator> (default)
+format = <label-indicator>
+format-spacing = 0
+
+; Available tokens:
+;   %layout%
+;   %name%
+;   %number%
+; Default: %layout%
+
+label-layout = %name%
+label-layout-padding = 2
+label-layout-background = ${colors.amber}
+label-layout-foreground = ${colors.foreground}
+
+; Available tokens:	
+;   %name%
+; Default: %name%
+label-indicator = CAPS
+label-indicator-padding = 2
+label-indicator-foreground = ${colors.foreground}
+label-indicator-background = ${colors.green}
+
+
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/.config/polybar/custom/updates-arch-combined.sh
+interval = 600
+label-background = ${colors.alert}
+label-foreground = ${colors.white}
+label-padding = 2
+
+[module/date]
+type = internal/date
+interval = 1.0
+
+date = "%A, %d %B %Y" 
+date-alt =
+
+time = "%H:%M:%S"
+time-alt =
+
+;format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #0a6cf5
+
+label = %date% - %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume><bar-volume>
+label-volume = "Vol:"
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = "Vol: "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.cyan}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.yellow}
+bar-volume-foreground-3 = ${colors.amber}
+bar-volume-foreground-4 = ${colors.orange}
+bar-volume-foreground-5 = ${colors.deep-orange}
+bar-volume-foreground-6 = ${colors.red}
+bar-volume-gradient = false
+bar-volume-indicator = /
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = #ff
+bar-volume-fill = -
+bar-volume-fill-font = 2
+bar-volume-empty = -
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.grey}
+
+
+[module/backlight]
+type = custom/script
+interval = 0.2
+exec = ~/.config/polybar/custom/backlight.sh
+
+scroll-up = exec light -A 5
+scroll-down = exec light -U 5
+
+format-prefix = "BRIGHT"
+
+label = %output%
+label-foreground = ${colors.fg}
+format-padding = 1
+
+
+# FOR WHEN ROFISESH NOT AVAILABLE
+[module/powermenu]
+type = custom/menu
+
+label-open = PWR
+label-open-foreground = ${colors.white}
+label-open-background = ${colors.teal}
+label-open-padding = 2
+label-close = Cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 =  Reboot
+menu-0-0-exec = reboot
+menu-0-1 =  Power off
+menu-0-1-exec = shutdown now
+menu-0-2 =  Log out
+menu-0-2-exec = i3-msg exit
+;menu-0-3 =  Lock
+;menu-0-3-exec = lock &
+
+
+# Additional Modules
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = CPU:
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-background = ${colors.background}
+format-underline = ${xrdb:color13:#f90000}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = MEM:
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${xrdb:color13:#4bffdc}
+label = %percentage_used:2%%
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected-underline = ${xrdb:color11:#55aa55}
+format-connected-prefix = "IP:"
+format-connected-prefix-foreground = ${colors.lime}
+format-connected-prefix-background = ${colors.background}
+format-connected-suffix = " "
+format-connected-suffix-foreground = ${colors.lime}
+format-connected-suffix-background = ${colors.background}
+label-connected = %local_ip% ↑%upspeed% ↓%downspeed% 
+label-connected-foreground = ${colors.lime}
+label-connected-background = ${colors.background}
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/thunar]
+type = custom/text
+content-foreground = ${colors.foreground}
+content-background = ${colors.amber}
+content = " Home "
+click-left = thunar
+
+[module/nm-launcher]
+type = custom/text
+content-foreground = ${colors.foreground}
+content-background = ${colors.alert}
+content = " NET "
+click-left = nm-connection-editor
+
+[module/wifi-connect]
+type = custom/text
+content-foreground = ${colors.foreground}
+content-background = ${colors.alert}
+content = " WIFI "
+click-left = "notify-send "TERMINAL REQUIRED" "sudo wifi-menu -o""
+
+[module/SPACER]
+type = custom/text
+content = " " 
+
+; "content" has the same properties as "format-NAME"
+; content-background = #000
+; content-foreground = #fff
+content-padding = 0
+
+[module/BREAKER]
+type = custom/text
+content = "  •  " 
+
+; "content" has the same properties as "format-NAME"
+; content-background = #000
+; content-foreground = #fff
+content-padding = 0
