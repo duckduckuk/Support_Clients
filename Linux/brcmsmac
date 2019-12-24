@@ -1,0 +1,20 @@
+Normal Fix:
+
+pacman -S broadcom-wl-dkms
+
+Advanced Fix:
+
+The /etc/modprobe.d/broadcom-wl.conf file states “this file overrides the default blacklist in /usr/lib/modprobe.d.”
+
+I had a look at that file and copied the 2 competing jerks into /etc/modprobe.d/broadcom-wl.conf, that is–
+blacklist b43
+blacklist bcma
+
+now the output of lspci -vnn -d 14e4: states the following changes–
+Kernel driver in use: wl
+Kernel modules: bcma, wl
+
+More importantly, speed are same as MacOS WiFi!!
+
+Prior output stated–
+Kernel driver in use: bcma-pci-bridge
