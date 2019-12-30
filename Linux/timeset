@@ -1,0 +1,4 @@
+sudo ntpdate time.windows.com
+
+
+(or any other provider)
