@@ -1,0 +1,34 @@
+###First, make sure to disable /etc/init.d/motd,  as it writes to /var/run/motd.dynamic.
+
+uname -snrvm > /var/run/motd.dynamic
+
+---
+RPI ONLY >>> sudo systemctl disable motd
+---
+
+###Then, just delete current static MOTD, create /etc/update-motd.d folder and place scripts in it.
+
+mkdir /etc/update-motd.d
+rm -f /etc/motd
+
+---
+
+###You can opt to get rid of the “last login” message if you want
+
+nano /etc/ssh/sshd_config
+PrintLastLog no
+
+---
+###Add Scripts
+
+cat > /etc/update-motd.d/10logo <<EOF
+
+#!/bin/sh
+echo
+cat /etc/issue
+EOF
+ 
+MAKE EXECUTABLE...
+chmod a+x /etc/update-motd.d/*
+
+
