@@ -1,0 +1,77 @@
+// CITB Simulator Monitoring Device
+// Evans / Keir Aug 2019
+
+#include <SimpleDHT.h>
+
+// for DHT11, 
+//      VCC: 5V or 3V
+//      GND: GND
+//      DATA: 2
+int pinDHT11 = 2;
+SimpleDHT11 dht11(pinDHT11);
+
+void setup() {
+  Serial.begin(115200);
+  // Initialise Output...
+  Serial.println("=================================");
+  Serial.println("CITB Temperature Monitor");
+  Serial.println("Evans/Keir 2019");
+  Serial.println("=================================");  
+
+  // Pulse
+  pinMode(LED_BUILTIN, OUTPUT);
+  // End Pulse
+}
+
+void loop() {
+
+  // Pulse
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(500);                       // wait for a half second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(1000);                       // wait for a second
+
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(100);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(200);                       // wait for a second  
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(100);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(200); 
+  // End Pulse
+
+  // Timestamp Start (Converts Millis to Seconds)
+  unsigned long runMillis= millis();
+  unsigned long allSeconds=millis()/1000;
+  int runHours= allSeconds/3600;
+  int secsRemaining=allSeconds%3600;
+  int runMinutes=secsRemaining/60;
+  int runSeconds=secsRemaining%60;
+  // Timestamp End
+  
+  // Tempstamp Start
+  byte temperature = 0;
+  byte humidity = 0;
+  int err = SimpleDHTErrSuccess;
+  if ((err = dht11.read(&temperature, &humidity, NULL)) != SimpleDHTErrSuccess) {
+    Serial.print("Read DHT11 failed, err="); Serial.println(err);delay(1000);
+    return;
+  }
+  // Tempstamp End
+  
+  Serial.print("Core Temperature: ");
+  Serial.print((int)temperature); Serial.print(" *C ") ; 
+  Serial.println("");  
+  Serial.print("Core Humidity: ");  
+  Serial.print((int)humidity); Serial.println(" H");
+
+  //Timestamp Output...
+  char buf[21];
+  sprintf(buf,"Time since boot: %02d:%02d:%02d",runHours,runMinutes,runSeconds);
+  Serial.println(buf);
+  Serial.println(".................................");    
+  
+  // DHT11 sampling rate is 1HZ (Refresh Rate).
+  delay(3000);
+}
