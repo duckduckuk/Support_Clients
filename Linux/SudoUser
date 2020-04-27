@@ -1,0 +1,6 @@
+pacman -S sudo
+useradd -m -g users -s /bin/bash %USERNAME%
+nano /etc/sudoers (or visudo)
+add user name undure root and include ALL=(ALL) ALL
+
+[[[WARNING]]] Keep Case and Space the same - this file can banjax
