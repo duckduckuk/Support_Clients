@@ -1,7 +1,7 @@
 sudo pacman -S git
+(Also ensure you have base-devel)
 
+Switch to user home (makepkg doesnt like root/sudo)
 git clone https://aur.archlinux.org/yay.git
-
 cd yay
-
 makepkg -si
