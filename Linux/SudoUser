@@ -4,3 +4,13 @@ nano /etc/sudoers (or visudo)
 add user name undure root and include ALL=(ALL) ALL
 
 [[[WARNING]]] Keep Case and Space the same - this file can banjax
+
+---
+
+# Let users of the "sudoers" group run commands.
+%sudoers    ALL=(ALL) ALL
+
+- gpasswd -a YOUR_USER_NAME sudoers
+- Logout and login.
+
+This way, if you have multiple users, you can just add them to the sudoers group and they will be able to use sudo.
