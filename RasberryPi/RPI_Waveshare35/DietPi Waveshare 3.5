@@ -1,0 +1,17 @@
+Waveshare 3.5" a LCD
+
+~$ dietpi-config
+select "1 : Display Options"
+select "3 : LCD Panel addon"
+select "waveshare32"
+exit and reboot
+~$ sudo apt install git
+~$ sudo git clone https://github.com/waveshare/LCD-show.git
+~$ cd LCD-show/
+~$ sudo ./LCD35-show
+wait for rebbot
+~$ sudo nano /DietPi/config.txt
+change "framebuffer_width=320" to "framebuffer_width=480"
+change "framebuffer_height=240" to "framebuffer_height=320"
+change "dtoverlay=waveshare32" to "dtoverlay=waveshare35a"
+~$ sudo reboot
