@@ -1,0 +1,6 @@
+Take Webcam pic and Send it...
+
+Command below:
+file="$HOME/Pictures/WebcamImage_$(date "+%Y%m%d_%H%M%S").jpg"; ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -ss 0:0:2 -frames 1 "${file}" && kdeconnect-cli -d $(kdeconnect-cli -a --id-only) --share "${file}"
+
+Remember to tick "Share and Receive"
