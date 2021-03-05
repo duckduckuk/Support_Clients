@@ -1,0 +1,5 @@
+wal -c to clear
+
+wal -a 85  -i /home/jaspernet/.config/wallpapers/main/wallpaper.jpg
+
+(-a 85 is alpha for urvxt -i is image at path [path])
