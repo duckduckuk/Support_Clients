@@ -1,3 +1,13 @@
+# Install
+
+pip3 install pywal
+
+or
+
+yay -S python-pywal
+
+# Run
+
 wal -c to clear
 
 wal -a 85  -i /home/jaspernet/.config/wallpapers/main/wallpaper.jpg
