@@ -1,0 +1,51 @@
+! ------------------------------------------------------------------------------
+!                      ROFI Settings
+! ------------------------------------------------------------------------------
+
+! ------------------------------------------------------------------------------
+! 					   General
+! ------------------------------------------------------------------------------
+rofi -fake-transparency:   	true
+rofi hide-scrollbar:      	false
+rofi.color-enabled: 		true
+rofi.m: 					-4
+
+! ------------------------------------------------------------------------------
+! 					   Layout
+! ------------------------------------------------------------------------------
+
+# Possible Rofi Modes                drun,window,ssh,run
+rofi.modi:                           drun,window
+rofi.terminal:                       urxvt
+rofi.ssh-client:                     ssh
+rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
+rofi.opacity:                        90
+rofi.width:                          100
+rofi.lines:                          15
+rofi.columns:                        2
+;rofi.font:                          Cantarell 13
+;show-icons: 						 true;
+rofi.show-icons: 					 true
+;rofi.drun-icon-theme: Pop
+!Border Width
+rofi.bw:                             0		
+rofi.location:                       0
+rofi.padding:                        0
+rofi.levenshtein-sort:               true
+rofi.case-sensitive:                 false
+rofi.fuzzy:                          false
+rofi.line-margin:                    0
+rofi.separator-style:                solid
+rofi.hide-scrollbar:                 true
+rofi.markup-rows:                    false
+rofi.scrollbar-width: 				 8
+rofi location:      			     0
+rofi.padding:        			     55
+rofi.sidebar-mode:    				 true
+rofi.fullscreen:         			 false
+
+! ------------------------------------------------------------------------------
+!                      ROFI Color theme
+! ------------------------------------------------------------------------------
+
+rofi.theme: duckduck

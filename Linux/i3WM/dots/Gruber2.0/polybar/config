@@ -1,0 +1,523 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+;RESOURCES
+;white = #fff
+;space = #454545
+;red = #e53935
+;pink = #d81b60
+;purple = #8e24aa
+;deep-purple = #5e35b1
+;indigo = #3949ab
+;blue = #1e88e5
+;light-blue = #039be5
+;cyan = #00acc1
+;teal = #00897b
+;green = #43a047
+;light-green = #7cb342
+;lime = #c0ca33
+;yellow = #fdd835
+;amber = #ffb300
+;orange = #fb8c00
+;deep-orange = #f4511e
+;super-orange : #ed602d
+;brown = #6d4c41
+;grey = #757575
+;blue-grey = #546e7a
+
+[colors]
+background = ${xrdb:color0:#222}
+background-alt = ${xrdb:color8:#222}
+;background = #cc000000
+;background-alt = #333333
+
+foreground = ${xrdb:color13:#222}
+foreground-alt = ${xrdb:color5:#222}
+;foreground = #fff
+;foreground-alt = #00acc1
+
+primary = ${xrdb:color4:#ff0222}
+secondary = ${xrdb:color3:#222}
+alert = ${xrdb:color12:#222}
+;primary =  #456771
+;secondary = #09404d
+;alert = #bd2c40
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[settings]
+; The throttle settings lets the eventloop swallow up til X events
+; if they happen within Y millisecond after first event was received.
+; This is done to prevent flood of update event.
+;
+; For example if 5 modules emit an update event at the same time, we really
+; just care about the last one. But if we wait too long for events to swallow
+; the bar would appear sluggish so we continue if timeout
+; expires or limit is reached.
+throttle-output = 5
+throttle-output-for = 10
+
+; Time in milliseconds that the input handler will wait between processing events
+throttle-input-for = 30
+
+; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = true
+
+[bar/one]
+wm-restack = i3
+monitor-strict = true
+fixed-center = false
+bottom = true
+height = 24
+width = 100%
+
+border-size= 0
+border-color= ${colors.background}
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+line-size = 1
+line-color = #f00
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+font-0 = "Sans :size=10;3"
+; font-1 = "NotoEmoji Nerd Font:size=8;2"
+
+spacing = 1
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+
+modules-left = i3 xwindow
+modules-center = xbacklight
+modules-right =  date BREAKER pubip SPACER
+
+tray-position = right
+tray-padding = 2
+tray-transparent = true
+
+##############
+##############
+##############
+
+[bar/top]
+wm-restack = i3
+monitor-strict = true
+fixed-center = false
+bottom = false
+height = 18
+width = 100%
+
+border-size= 0
+border-color= ${colors.background}
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+line-size = 1
+line-color = #f00
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+font-0 = "Inconsolata :size=8;2"
+; font-1 = "NotoEmoji Nerd Font:size=8;2"
+
+spacing = 1
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+
+modules-left =  rofi rofitask rofisesh BREAKER i3
+modules-center =
+modules-right =  keyboard SPACER volume SPACER backlight SPACER date
+
+################
+################
+################
+
+[bar/bottom]
+wm-restack = i3
+monitor-strict = true
+fixed-center = false
+bottom = true
+height = 18
+width = 100%
+
+border-size= 0
+border-color= ${colors.background}
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+line-size = 1
+line-color = #f00
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+font-0 = "Inconsolata :size=8;2"
+; font-1 = "NotoEmoji Nerd Font:size=8;2"
+
+spacing = 1
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+
+modules-left = xwindow
+modules-center =
+modules-right = eth BREAKER wlan BREAKER cpu SPACER memory SPACER
+
+tray-position = right
+tray-padding = 2
+tray-transparent = true
+
+################
+################
+################
+
+[module/xwindow]
+type = internal/xwindow
+label = "   %{F#5b5b5b}>%{F-} %title:0:70:...%"
+label-maxlen = 500
+
+[module/rofi]
+type = custom/script
+label-padding = 1
+interval = 120
+exec = echo "M"
+;click-left = "rofi -show-icons -show drun >/dev/null 2>&1 &"
+click-left = "rofi -show drun -show-icons >/dev/null 2>&1 &"
+label-foreground = ${colors.foreground}
+label-background = ${colors.pink}
+
+[module/rofitask]
+type = custom/script
+label-padding = 1
+interval = 120
+exec = echo "T"
+click-left = "rofi window -show window -show-icons >/dev/null 2>&1 &"
+label-foreground = ${colors.foreground}
+label-background = ${colors.purple}
+
+[module/rofisesh]
+type = custom/script
+label-padding = 1
+interval = 120
+exec = echo "U"
+click-left = "rofi_run -l >/dev/null 2>&1 &"
+label-foreground = ${colors.foreground}
+label-background = ${colors.deep-purple}
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-click = true
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+format = <label-state> <label-mode>
+
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;8
+ws-icon-8 = 9;9
+ws-icon-9 = 10;10
+ws-icon-default = ::
+
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-background = ${colors.pink}
+
+label-focused = %icon%
+label-focused-foreground = ${colors.foreground}
+label-focused-underline = ${colors.primary}
+label-focused-background = ${colors.pink}
+label-focused-padding = 1
+
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.blue-grey}
+label-unfocused = %icon%
+label-unfocused-padding = 1
+
+label-visible = %icon%
+label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+
+[module/keyboard]
+type = internal/xkeyboard
+
+; List of indicators to ignore
+; blacklist-0 = num lock
+; blacklist-1 = caps lock
+blacklist-2 = scroll lock
+
+
+; Available tags:
+;   <label-layout> (default)
+;   <label-indicator> (default)
+format = <label-indicator>
+format-spacing = 0
+
+; Available tokens:
+;   %layout%
+;   %name%
+;   %number%
+; Default: %layout%
+
+label-layout = %name%
+label-layout-padding = 2
+label-layout-background = ${colors.amber}
+label-layout-foreground = ${colors.foreground}
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-indicator = %name%
+label-indicator-padding = 2
+label-indicator-foreground = ${colors.foreground}
+label-indicator-background = ${colors.green}
+
+
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/.config/polybar/custom/updates-arch-combined.sh
+interval = 600
+label-background = ${colors.alert}
+label-foreground = ${colors.white}
+label-padding = 2
+
+[module/date]
+type = internal/date
+interval = 1.0
+
+date = "%A, %d %B %Y"
+date-alt =
+
+time = "%H:%M:%S"
+time-alt =
+
+format-prefix = " "
+format-foreground = ${colors.foreground}
+;format-background = ${colors.teal}
+format-suffix = " "
+;format-underline = #0a6cf5
+
+label = %date% - %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume><bar-volume>
+label-volume = "Vol:"
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = "Vol: "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.cyan}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.yellow}
+bar-volume-foreground-3 = ${colors.amber}
+bar-volume-foreground-4 = ${colors.orange}
+bar-volume-foreground-5 = ${colors.deep-orange}
+bar-volume-foreground-6 = ${colors.red}
+bar-volume-gradient = false
+bar-volume-indicator = /
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = #ff
+bar-volume-fill = -
+bar-volume-fill-font = 2
+bar-volume-empty = -
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.grey}
+
+[module/backlight]
+type = internal/xbacklight
+; XRandR output to get get values from
+; Default: the monitor defined for the running bar
+output = LVDS1
+enable-scroll = true
+; Set Either Bar or Percent
+format = <label>
+
+; Available Visuals Label:
+; %percentage% (default)
+label = " Scr: %percentage%% "
+; Available Visuals Bar:
+label-foreground = ${colors.white}
+label-background = ${colors.teal}
+bar-width = 5
+bar-indicator = /
+bar-fill = -
+bar-empty = -
+
+
+# FOR WHEN ROFISESH NOT AVAILABLE
+[module/powermenu]
+type = custom/menu
+
+label-open = PWR
+label-open-foreground = ${colors.white}
+label-open-background = ${colors.teal}
+label-open-padding = 2
+label-close = Cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 =  Reboot
+menu-0-0-exec = reboot
+menu-0-1 =  Power off
+menu-0-1-exec = shutdown now
+menu-0-2 =  Log out
+menu-0-2-exec = i3-msg exit
+;menu-0-3 =  Lock
+;menu-0-3-exec = lock &
+
+
+# Additional Modules
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = CPU:
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-background = ${colors.background}
+format-underline = ${xrdb:color13:#f90000}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = MEM:
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${xrdb:color13:#4bffdc}
+label = %percentage_used:2%%
+
+### SHOW INTERFACE NAMES USING :: ip link show
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected-underline = ${xrdb:color11:#55aa55}
+format-connected-prefix = "IP:"
+format-connected-prefix-foreground = ${colors.pink}
+format-connected-prefix-background = ${colors.background}
+format-connected-suffix = " "
+format-connected-suffix-foreground = ${colors.pink}
+format-connected-suffix-background = ${colors.background}
+label-connected = %local_ip% ↑%upspeed% ↓%downspeed%
+label-connected-foreground = ${colors.pink}
+label-connected-background = ${colors.background}
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/wlan]
+type = internal/network
+interface = wlan0
+interval = 3.0
+
+format-connected-underline = ${colors.cyan}
+format-connected-prefix = "IP:"
+format-connected-prefix-foreground = ${colors.cyan}
+format-connected-prefix-background = ${colors.background}
+format-connected-suffix = " "
+format-connected-suffix-foreground = ${colors.pink}
+format-connected-suffix-background = ${colors.background}
+label-connected = %local_ip% ↑%upspeed% ↓%downspeed%
+label-connected-foreground = ${colors.pink}
+label-connected-background = ${colors.background}
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+;;;Public IP;;;
+[module/pubip]
+type = custom/script
+exec = ~/.config/polybar/scripts/publicip.sh
+interval = 60
+
+[module/thunar]
+type = custom/text
+content-padding = 1
+content-foreground = ${colors.foreground}
+content-background = ${colors.amber}
+content = "H"
+click-left = thunar
+
+[module/nm-launcher]
+type = custom/text
+content-foreground = ${colors.foreground}
+content-background = ${colors.alert}
+content = " NET "
+click-left = nm-connection-editor
+
+[module/tip]
+type = custom/text
+content-foreground = ${colors.foreground}
+content-background = ${colors.alert}
+content = " WIFI "
+click-left = "notify-send "TERMINAL REQUIRED" "sudo wifi-menu -o""
+
+[module/SPACER]
+type = custom/text
+content = " "
+
+; "content" has the same properties as "format-NAME"
+; content-background = #000
+; content-foreground = #fff
+content-padding = 0
+
+[module/BREAKER]
+type = custom/text
+content = "  •  "
+
+; "content" has the same properties as "format-NAME"
+; content-background = #000
+; content-foreground = #fff
+content-padding = 0
