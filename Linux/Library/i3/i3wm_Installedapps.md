@@ -8,3 +8,7 @@ rofi
 rxvt-unicode
 brave-bin
 feh
+
+---
+
+pywal
