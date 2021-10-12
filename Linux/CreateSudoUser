@@ -1,0 +1,33 @@
+1. Install sudo
+As sudo is not included as part of the base installation, it will need to be installed. If you haven't done an update for a while, remember to update your local repository databases first.
+
+# pacman --sync sudo
+2. Add a New User Account
+Create a new user account with the useradd tool.
+
+# useradd --create-home example_user
+Set a strong password for the new user with the passwd tool.
+
+# passwd example_user
+3. Add the User to the Wheel Group
+Add the new user to the wheel group with the usermod tool.
+
+# usermod --append --groups wheel example_user
+4. Edit Sudoers File
+Edit the sudoers file with the visudo tool.
+
+# visudo
+Look for the wheel group in the 'User privilege specification' section at the bottom of the file. Remove the comment from the beginning of the line, so this it looks like this:
+
+## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL) ALL
+Save and exit visudo. Type ESC, then :WQ (lowercase), then ENTER.
+
+📝 Note: The visudo utility performs syntax checking before committing your edits to the file. A malformed sudoers file can break your system. Never edit /etc/sudoers directly. For example, if you make an error, you'll see this when exiting visudo.
+
+visudo: >>> /etc/sudoers: syntax error near line 64 <<<
+What now?
+Options are:
+(e)dit sudoers file again
+e(x)it without saving changes to sudoers file
+(Q)uit and save changes to sudoers file (DANGER!)
