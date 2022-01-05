@@ -1,0 +1,28 @@
+Jan 05 18:37 : exception: Failed to open '/home/jaspernet/.config/mpd/state': No such file or directory
+Jan 05 18:37 : exception: Failed to open '/home/jaspernet/.config/mpd/state': No such file or directory
+Jan 05 18:38 : exception: Failed to open '/home/jaspernet/.config/mpd/state': No such file or directory
+Jan 05 18:38 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 05 18:38 : ffmpeg/mp3: Format mp3 detected only with low score of 1, misdetection possible!
+Jan 05 18:38 : ffmpeg/mp3: Failed to read frame size: Could not seek to 1026.
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0001
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0002
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0003
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0004
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0005
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0006
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0007
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0008
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0009
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0010
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0011
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0012
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0013
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0014
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0015
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0016
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0017
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0018
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0019
+Jan 05 18:38 : update: removing BackedUp/Audio/Classical/J.S. Bach - Musikalisches Opfer (Le Concert des Nations, Jordi Savall) [FLAC]/J.S.Bach - Musikalisches Opfer.cue/track0020
+Jan 05 18:39 : player: played "BackedUp/Audio/Country/Humdingers/Ry Cooder - Billy the Kid.mp3"
+Jan 05 18:41 : player: played "BackedUp/Audio/Country/Humdingers/Ry Cooder - Billy the Kid.mp3"
