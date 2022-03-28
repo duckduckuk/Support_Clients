@@ -1,1 +1,1 @@
-<path>psexec.exe -sid <path to executable>
+[path]psexec.exe -sid [path to executable]
