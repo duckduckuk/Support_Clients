@@ -1,5 +1,5 @@
 // CITB Simulator Monitoring Device
-// Evans / Keir Aug 2019
+// Keir Aug 2019
 
 #include <SimpleDHT.h>
 
