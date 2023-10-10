@@ -1,0 +1,3 @@
+Run this in terminal....
+
+WEBKIT_DISABLE_COMPOSITING_MODE=1 MESA_LOADER_DRIVER_OVERRIDE=zink gnome-control-center online-accounts
