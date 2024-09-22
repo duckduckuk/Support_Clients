@@ -1,0 +1,6 @@
+Linux
+QUOD LIBET
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5A62D0CAB6264964
+sudo apt-get update
+sudo apt-get install quodlibet
